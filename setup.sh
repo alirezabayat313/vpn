@@ -1,9 +1,12 @@
 # Open ports
+echo "بسم الله الرحمن رحیم"
 read -p "پورت برای اتصال وی پی ان: " vpnport
 ufw allow 80
 ufw allow 443
 ufw allow $vpnport
-echo "Ports 80, 443, and $vpnport opened, ensure they are open on VM hosting service too."
+echo "پورت های 80 و 443 و $vpnport باز شد"
+
+# Ports 80, 443, and $vpnport opened, ensure they are open on VM hosting service too.
 
 # Create 1GB swap memory
 mkdir -p /var/swapmemory
@@ -15,15 +18,17 @@ chmod 600 swapfile
 free -m
 echo "تعویض حافظه ایجاد شد."
 
+
+
 # Boost network performance
 sysctl -w net.core.rmem_max=26214400
 sysctl -w net.core.rmem_default=26214400
-echo "Network performance boosted."
+echo "عملکرد نتورک سرور شما افزایش یافت !"
 
 # Install python, pip, and screen
 apt update
 apt install python3 python3-pip screen
-echo "Installed python, pip, and screen."
+echo "پایتون و pip و screen نصب شد !"
 
 # Install caddy
 apt install -y debian-keyring debian-archive-keyring apt-transport-https
@@ -31,17 +36,17 @@ curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/gpg.key' | gpg --dearmo
 curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/debian.deb.txt' | tee /etc/apt/sources.list.d/caddy-stable.list
 apt update
 apt install caddy
-echo "Caddy installed."
+echo "Caddy نصب شد !"
 
 # Configure reverse proxy with caddy
-read -p "Web admin panel domain: " admindomain
+read -p "دامنه پنل ادمین: " admindomain
 cat << EOF > /etc/caddy/Caddyfile
 $admindomain {
     reverse_proxy localhost:5000
 }
 EOF
 caddy reload --config /etc/caddy/Caddyfile
-echo "Reverse proxy configured with caddy."
+echo "کانفیگ پروکسی انجام شد !"
 
 # Setup the web admin panel
 cd
