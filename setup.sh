@@ -4,10 +4,10 @@ read -p "پورت برای اتصال وی پی ان: " vpnport
 ufw allow 80
 ufw allow 443
 ufw allow $vpnport
-echo "پورت های 80 و 443 و $vpnport باز شد"
+echo "پورت های 80 و 443 و $vpnport باز شد!"
 
 # Ports 80, 443, and $vpnport opened, ensure they are open on VM hosting service too.
-
+# sudo wget https://raw.githubusercontent.com/alirezabayat313/vpn/main/setup.sh -O setup.sh && sudo chmod +x setup.sh && sudo bash setup.sh
 # Create 1GB swap memory
 mkdir -p /var/swapmemory
 cd /var/swapmemory
@@ -53,16 +53,17 @@ cd
 git clone https://github.com/dashroshan/openvpn-wireguard-admin vpn
 cd vpn
 python3 -m pip install -r requirements.txt
-echo "Web admin panel cloned and packages installed."
+echo "پنل ادمین کانفیگ شد !"
 
 # Create the configWireguard.py
-read -p "Enter 'wireguard' or 'openvpn' as needed: " vpntype
+read -p "'wiregaurd' رو میخوای یا 'openvpn' بلا ؟" vpntype
+# "Enter 'wireguard' or 'openvpn' as needed: "
 if [ "$vpntype" == "wireguard" ]; then
 read -p "Enter 'True' or 'False' for AdBlock: " adblock
 cat << EOF > configWireguard.py
 wireGuardBlockAds = $adblock
 EOF
-echo "configureWireguard.py file created for AdBlock settings."
+echo "configureWireguard.py ساخته شد!"
 fi
 
 # Create the config.py
@@ -87,15 +88,16 @@ wget https://raw.githubusercontent.com/Nyr/wireguard-install/master/wireguard-in
 else
 wget https://raw.githubusercontent.com/Nyr/openvpn-install/master/openvpn-install.sh -O vpn-install.sh
 fi
-echo "VPN setup script downloaded."
+echo "اسکریپت وی پی ان دانلود شد !"
 
 # Setup vpn
 chmod +x vpn-install.sh
 bash vpn-install.sh
-echo "VPN service installed."
+echo "وی پی ان آماده شد شیطون"
 
 # Run web admin portal
 cd vpn
 screen -dmS vpn bash -c 'python3 main.py; bash'
-echo "Web admin portal started at $admindomain"
-echo "Done!"
+echo "پنل ادمین روی پورت $admindomain اجرا شد"
+# Web admin portal started at $admindomain"
+echo "وی پی ان اوکی شد برو عشق کن"
