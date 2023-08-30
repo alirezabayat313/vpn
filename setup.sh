@@ -1,12 +1,11 @@
 # Open ports
-echo "بسم الله الرحمن رحیم"
+echo -e "\032[1;35mبسم الله الرحمن رحیم"
 read -p "پورت برای اتصال وی پی ان: " vpnport
 ufw allow 80
 ufw allow 443
 ufw allow $vpnport
 echo "پورت های 80 و 443 و $vpnport باز شد!"
 
-# Ports 80, 443, and $vpnport opened, ensure they are open on VM hosting service too.
 # sudo wget https://raw.githubusercontent.com/alirezabayat313/vpn/main/setup.sh -O setup.sh && sudo chmod +x setup.sh && sudo bash setup.sh
 # Create 1GB swap memory
 mkdir -p /var/swapmemory
@@ -56,10 +55,10 @@ python3 -m pip install -r requirements.txt
 echo "پنل ادمین کانفیگ شد !"
 
 # Create the configWireguard.py
-read -p "'wiregaurd' رو میخوای یا 'openvpn' بلا ؟" vpntype
+read -p "'wiregaurd' رو میخوای یا 'openvpn' بلا ؟"  vpntype
 # "Enter 'wireguard' or 'openvpn' as needed: "
 if [ "$vpntype" == "wireguard" ]; then
-read -p "Enter 'True' or 'False' for AdBlock: " adblock
+read -p "Enter 'True' or 'False' for AdBlock: "  adblock
 cat << EOF > configWireguard.py
 wireGuardBlockAds = $adblock
 EOF
@@ -98,6 +97,5 @@ echo "وی پی ان آماده شد شیطون"
 # Run web admin portal
 cd vpn
 screen -dmS vpn bash -c 'python3 main.py; bash'
-echo "پنل ادمین روی پورت $admindomain اجرا شد"
-# Web admin portal started at $admindomain"
+echo "پنل ادمین روی پورت $admindomain اجرا شد!"
 echo "وی پی ان اوکی شد برو عشق کن"
