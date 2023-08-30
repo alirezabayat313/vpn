@@ -55,7 +55,7 @@ python3 -m pip install -r requirements.txt
 echo -e "\033[1;32mپنل ادمین کانفیگ شد !"
 
 # Create the configWireguard.py
-read -p "'wireguard' روی مخوای یا 'openvpn' ?"  vpntype
+read -p "'wireguard' OR 'openvpn' : "  vpntype
 # "Enter 'wireguard' or 'openvpn' as needed: "
 if [ "$vpntype" == "wireguard" ]; then
 read -p "Enter 'True' or 'False' for AdBlock: "  adblock
