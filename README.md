@@ -13,8 +13,8 @@ sudo wget https://raw.githubusercontent.com/dashroshan/openvpn-wireguard-admin/m
 
 ### Admin panel
 
-<img src="./docs/screenshot.png" width="100%"/>
+<img src="./screenshot.png" width="100%"/>
+
 
 ### Credits
 
-This project uses the easy install scripts by [Nyr](https://github.com/Nyr) for setting up the OpenVPN and WireGuard services.
