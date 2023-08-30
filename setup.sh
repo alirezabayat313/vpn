@@ -1,10 +1,10 @@
 # Open ports
-echo -e "\033[1;32mBold text"
-read -p "پورت برای اتصال وی پی ان: " vpnport
+echo -e "\033[1;32mSalam Rafiq"
+read -p "${DK}پورت برای اتصال وی پی ان: " vpnport
 ufw allow 80
 ufw allow 443
 ufw allow $vpnport
-echo "پورت های 80 و 443 و $vpnport باز شد!"
+echo -e "\033[1;32mپورت های 80 و 443 و $vpnport باز شد!"
 
 # sudo wget https://raw.githubusercontent.com/alirezabayat313/vpn/main/setup.sh -O setup.sh && sudo chmod +x setup.sh && sudo bash setup.sh
 # Create 1GB swap memory
@@ -15,19 +15,19 @@ mkswap swapfile
 swapon swapfile
 chmod 600 swapfile
 free -m
-echo "تعویض حافظه ایجاد شد."
+echo -e "\033[1;32mتعویض حافظه ایجاد شد."
 
 
 
 # Boost network performance
 sysctl -w net.core.rmem_max=26214400
 sysctl -w net.core.rmem_default=26214400
-echo "عملکرد نتورک سرور شما افزایش یافت !"
+echo -e "\033[1;32mعملکرد نتورک سرور شما افزایش یافت !"
 
 # Install python, pip, and screen
 apt update
 apt install python3 python3-pip screen
-echo "پایتون و pip و screen نصب شد !"
+echo -e "\033[1;32mپایتون و pip و screen نصب شد !"
 
 # Install caddy
 apt install -y debian-keyring debian-archive-keyring apt-transport-https
@@ -35,7 +35,7 @@ curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/gpg.key' | gpg --dearmo
 curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/debian.deb.txt' | tee /etc/apt/sources.list.d/caddy-stable.list
 apt update
 apt install caddy
-echo "Caddy نصب شد !"
+echo -e "\033[1;32mCaddy نصب شد !"
 
 # Configure reverse proxy with caddy
 read -p "دامنه پنل ادمین: " admindomain
@@ -45,14 +45,14 @@ $admindomain {
 }
 EOF
 caddy reload --config /etc/caddy/Caddyfile
-echo "کانفیگ پروکسی انجام شد !"
+echo -e "\033[1;32mکانفیگ پروکسی انجام شد !"
 
 # Setup the web admin panel
 cd
 git clone https://github.com/dashroshan/openvpn-wireguard-admin vpn
 cd vpn
 python3 -m pip install -r requirements.txt
-echo "پنل ادمین کانفیگ شد !"
+echo -e "\033[1;32mپنل ادمین کانفیگ شد !"
 
 # Create the configWireguard.py
 read -p "'wiregaurd' رو میخوای یا 'openvpn' بلا ؟"  vpntype
@@ -62,7 +62,7 @@ read -p "Enter 'True' or 'False' for AdBlock: "  adblock
 cat << EOF > configWireguard.py
 wireGuardBlockAds = $adblock
 EOF
-echo "configureWireguard.py ساخته شد!"
+echo -e "\033[1;32mconfigureWireguard.py ساخته شد!"
 fi
 
 # Create the config.py
@@ -78,7 +78,7 @@ creds = {
     "password": "$passwordhash",
 }
 EOF
-echo "فایل پایتون به اسم کانفیگ برای پنل ادمین ساخته شد!"
+echo -e "\033[1;32mفایل پایتون به اسم کانفیگ برای پنل ادمین ساخته شد!"
 
 # Download vpn setup script
 cd
@@ -87,15 +87,15 @@ wget https://raw.githubusercontent.com/Nyr/wireguard-install/master/wireguard-in
 else
 wget https://raw.githubusercontent.com/Nyr/openvpn-install/master/openvpn-install.sh -O vpn-install.sh
 fi
-echo "اسکریپت وی پی ان دانلود شد !"
+echo -e "\033[1;32mاسکریپت وی پی ان دانلود شد !"
 
 # Setup vpn
 chmod +x vpn-install.sh
 bash vpn-install.sh
-echo "وی پی ان آماده شد شیطون"
+echo -e "\033[1;32mوی پی ان آماده شد شیطون"
 
 # Run web admin portal
 cd vpn
 screen -dmS vpn bash -c 'python3 main.py; bash'
-echo "پنل ادمین روی پورت $admindomain اجرا شد!"
-echo "وی پی ان اوکی شد برو عشق کن"
+echo -e "\033[1;32mپنل ادمین روی پورت $admindomain اجرا شد!"
+echo -e "\033[1;32mوی پی ان اوکی شد برو عشق کن"
