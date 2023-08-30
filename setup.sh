@@ -1,4 +1,3 @@
-# Open ports
 echo -e "\033[1;32mSalam Rafiq"
 read -p "${DK}پورت برای اتصال وی پی ان: " vpnport
 ufw allow 80
@@ -6,7 +5,7 @@ ufw allow 443
 ufw allow $vpnport
 echo -e "\033[1;32mپورت های 80 و 443 و $vpnport باز شد!"
 
-# sudo wget https://raw.githubusercontent.com/alirezabayat313/vpn/main/setup.sh -O setup.sh && sudo chmod +x setup.sh && sudo bash setup.sh
+
 # Create 1GB swap memory
 mkdir -p /var/swapmemory
 cd /var/swapmemory
