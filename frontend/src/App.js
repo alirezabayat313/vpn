@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import hideLoader from "./utils/hideLoader";
 import axios from "axios";
+import "./font.css";
 import NavBar from "./NavBar";
 
 export default function App() {
@@ -103,36 +104,35 @@ export default function App() {
 
     return (
         <>
-            <NavBar vpnType={vpnType} />
-            <div className="flex flex-col items-center gap-1 md:flex-row md:justify-center md:gap-5 md:px-6 px-4 mt-[4.7rem]">
+            <div className="flex transition flex-col items-center gap-1 md:flex-row md:justify-center md:gap-5 md:px-6 px-4 mt-[4.7rem]">
                 <div className="mt-4 card w-full bg-base-100 border shadow-lg max-w-sm">
                     <div className="card-body">
-                        <h1 className="card-title text-2xl mb-2">{loggedIn ? `${vpnType} Admin` : `Login to ${vpnType}`}</h1>
+                        <h1 dir="rtl" className="card-title text-2xl mb-2">{loggedIn ? `مانیتورینگ` : ` ورود`}</h1>
                         {loggedIn ? <>
-                            <h2 className="-mb-2 mt-1 font-semibold">
-                                <span className="mr-2">Current load on CPU</span>
+                            <h2 dir="rtl" className="-mb-2 mt-1 font-semibold">
+                                <span className="mr-2">پردازنده</span>
                                 <progress className="progress progress-primary w-lg h-4 translate-y-[0.1rem]" value={systemStats.cpu} max="100"></progress>
                             </h2>
-                            <h2 className="mb-3 font-semibold">
-                                <span className="mr-2">Current RAM usage</span>
+                            <h2 dir="rtl" className="mb-3 font-semibold">
+                                <span className="mr-2">رم</span>
                                 <progress className="progress progress-primary w-lg h-4 translate-y-[0.1rem]" value={systemStats.memory} max="100"></progress>
                             </h2></> : null}
                         {loggedIn ? null : <>
                             <div className="form-control w-full max-w-xs">
-                                <label className="label"><span className="label-text">Enter your admin username</span></label>
-                                <input type="text" placeholder="Username" className="input input-bordered w-full max-w-xs" onChange={(e) => setadminUser(e.target.value)} />
+                                <label dir="rtl" className="label"><span className="label-text">نام کاربری را وارد کنید</span></label>
+                                <input type="text" dir="rtl" placeholder="نام کاربری" className="input input-bordered w-full max-w-xs" onChange={(e) => setadminUser(e.target.value)} />
                             </div>
                             <div className="form-control w-full max-w-xs mb-5">
-                                <label className="label"><span className="label-text">Enter your admin password</span></label>
-                                <input type="password" placeholder="Password" className="input input-bordered w-full max-w-xs" onChange={(e) => setadminPass(e.target.value)} />
+                                <label dir="rtl" className="label"><span className="label-text rtl">رمز عبور را وارد کنید</span></label>
+                                <input type="password" dir="rtl" placeholder="رمز عبور" className="input input-bordered w-full max-w-xs" onChange={(e) => setadminPass(e.target.value)} />
                             </div>
                         </>}
-                        <div className="card-actions justify-start">
-                            <button className="btn btn-primary" onClick={async (e) => {
+                        <div className="card-actions justify-center">
+                            <button className="btn bg-red-400" onClick={async (e) => {
                                 e.target.disabled = true;
                                 await loginLogoutBtn();
                                 e.target.disabled = false;
-                            }}>{loggedIn ? "Logout" : "Login as admin"}</button>
+                            }}>{loggedIn ? "خروج" : "ورود ادمین"}</button>
                         </div>
                     </div>
                 </div>
@@ -140,10 +140,10 @@ export default function App() {
                 {loggedIn ?
                     <div className="mt-4 card w-full bg-base-100 border shadow-lg max-w-sm">
                         <div className="card-body">
-                            <h1 className="card-title text-2xl mb-3">Create new user</h1>
+                            <h1 className="card-title text-2xl mb-3" dir="rtl">ساختن  کاربر جدید</h1>
                             <div className="form-control w-full max-w-xs mb-5">
-                                <label className="label"><span className="label-text">Only a-z and A-Z alphabets allowed</span></label>
-                                <input type="text" placeholder="Username" className="input input-bordered w-full max-w-xs" onChange={(e) => {
+                                <label dir="rtl" className="label"><span className="label-text"> a-z and A-Z فقط</span></label>
+                                <input dir="rtl" type="text" placeholder="Username" className="input input-bordered w-full max-w-xs" onChange={(e) => {
                                     const text = e.target.value;
                                     if (/^[a-zA-Z]+$/.test(text)) {
                                         setNewUser(text);
@@ -152,8 +152,8 @@ export default function App() {
                                     else setwrongUserName(true);
                                 }} />
                             </div>
-                            <div className="card-actions justify-start">
-                                <button disabled={wrongUserName} className="btn btn-primary" onClick={async (e) => {
+                            <div dir="rtl" className="card-actions justify-start">
+                                <button  disabled={wrongUserName} className="btn bg-red-400" onClick={async (e) => {
                                     e.target.disabled = true;
                                     await createUser();
                                     e.target.disabled = false;
@@ -202,6 +202,9 @@ export default function App() {
                         </div>
                     </div>
                 </div> : null}
+                <div className="flex justify-center mt-7">ساخته شده با ❤️ برای مردم ایران</div>    
+                <div className="flex justify-center mt-5">! اینترنت برای همه ; یا هیچ کس</div>    
+                <div className="flex justify-center mt-5">علیرضا - 2023</div>    
         </>
     )
 }

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./font.css";
 
 export default function NavBar(props) {
     const [navOpen, setNavOpen] = useState(false);
