@@ -1,5 +1,5 @@
 # Open ports
-echo "\033[1;32mBold text"
+echo -e "\033[1;32mBold text"
 read -p "پورت برای اتصال وی پی ان: " vpnport
 ufw allow 80
 ufw allow 443
