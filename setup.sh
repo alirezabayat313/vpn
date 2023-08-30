@@ -1,6 +1,6 @@
 # Open ports
-GREEN= '\033[1;37m'
-echo -e "${GREEN}بسم الله الرحمن رحیم"
+GREEN= '\033[0;37m'
+echo -e "${Green}بسم الله الرحمن رحیم"
 read -p "پورت برای اتصال وی پی ان: " vpnport
 ufw allow 80
 ufw allow 443
