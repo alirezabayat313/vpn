@@ -1,20 +1,19 @@
-# OpenVPN • WireGuard
+# OpenVPN • WireGuard فیلتر شکن
 
-Install OpenVPN or WireGuard along with a web admin panel on a freshly created virtual machine using just a single line of command.
+سلام من علیرضا هستم یه برنامه نویس فرانت اند :)
+من کد های بک اند این پروژه رو برداشتم و با یک ui بسیار زیبای فارسی براتون ادغام کردم !
+تمام هدفم این بوده به قدری ساده باشه که همه افراد بتونن این پروژه رو روی سرور لینوکسی خودشون بدون هیچ دانشی راه اندازی کنن.
+به زودی توی یوتویوب آموزشش رو میزارم و لینکس رو اینجا قرار میدم !
 
 ```bash
-sudo wget https://raw.githubusercontent.com/dashroshan/openvpn-wireguard-admin/main/setup.sh -O setup.sh && sudo chmod +x setup.sh && sudo bash setup.sh
+sudo wget https://raw.githubusercontent.com/alirezabayat313/vpn/main/setup.sh -O setup.sh && sudo chmod +x setup.sh && sudo bash setup.sh
 ```
 
-### Prerequisites
+### مهم
 
--   Open port 80, 443, and whichever port you want to use for the VPN in your VM hosting network panel.
--   Create a domain pointing to your VM for the web admin panel.
+-   پورت 80 و 443 رو اگه میخواید از وی پی ان استفاده کنید باز کنید
+-   به دامنه نیاز دارید
 
-### Admin panel
+### پنل ادمین
 
 <img src="./screenshot.png" width="100%"/>
-
-
-### Credits
-
